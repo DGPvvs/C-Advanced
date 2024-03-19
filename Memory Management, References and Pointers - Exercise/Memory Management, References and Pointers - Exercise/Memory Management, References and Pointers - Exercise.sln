@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04 Some Ordering", "..\04 S
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05 Compare Matrices", "..\05 Compare Matrices\05 Compare Matrices.vcxproj", "{AB7085E8-9315-4D29-B789-38AB4FFA875F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06 Minesweeper", "..\06 Minesweeper\06 Minesweeper.vcxproj", "{1F6682BF-6675-4C7C-A159-B61C1056ACD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{AB7085E8-9315-4D29-B789-38AB4FFA875F}.Release|x64.Build.0 = Release|x64
 		{AB7085E8-9315-4D29-B789-38AB4FFA875F}.Release|x86.ActiveCfg = Release|Win32
 		{AB7085E8-9315-4D29-B789-38AB4FFA875F}.Release|x86.Build.0 = Release|Win32
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Debug|x64.ActiveCfg = Debug|x64
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Debug|x64.Build.0 = Debug|x64
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Debug|x86.ActiveCfg = Debug|Win32
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Debug|x86.Build.0 = Debug|Win32
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Release|x64.ActiveCfg = Release|x64
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Release|x64.Build.0 = Release|x64
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Release|x86.ActiveCfg = Release|Win32
+		{1F6682BF-6675-4C7C-A159-B61C1056ACD4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
