@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include <string>
-#include <stack>
+#include <queue>
+#include <cmath>
 
+//Помощен клас съдържащ координаните на клеткана
 class Point
 {
 private:
@@ -85,32 +87,29 @@ public:
 	}
 };
 
-bool IsValidIndex(int, int, int, int);
-
 int main()
 {
-	const int n = 10;
-	const int m = 10;
+	const int maxRow = 10;
+	const int maxCol = 10;
 	const char DOT = '.';
-	const char RUST = '#';
-	const char BEGUN = '!';
+	const char RUST = '!';
 
-	char** matrix = new char* [n];
+	char** matrix = new char* [maxRow];
 	std::string input;
 
-	std::stack<Point> q = std::stack<Point>();
-
-	for (int r = 0; r < n; r++)
+	std::queue<Point> q = std::queue<Point>();
+	//Запълване на матрицата и първоначално установяване на опашката с координатите на ръждивите клетки
+	for (int r = 0; r < maxRow; r++)
 	{
-		matrix[r] = new char[m];
+		matrix[r] = new char[maxCol];
 
 		std::getline(std::cin, input);
 
-		for (int c = 0; c < m; c++)
+		for (int c = 0; c < maxCol; c++)
 		{
 			matrix[r][c] = input[c];
 
-			if (matrix[r][c] == BEGUN)
+			if (matrix[r][c] == RUST)
 			{
 				Point point = Point(r, c);
 				q.push(point);
@@ -121,19 +120,25 @@ int main()
 	std::getline(std::cin, input);
 
 	int passes = stoi(input);
-
+	
 	for (int i = 0; i < passes; i++)
 	{
-		int currentCount = q.size();
+		int currentCount = q.size(); // Текуща дължина на опашката - определя броя ръждясали полета за текущия етап
+
+		//Цикъл, повтарящ се за всяко ново ръждясало поле от текущият етап
 		while (currentCount > 0)
 		{
-			Point point = q.top();
+			//Извличане на координатите (индексине) на текущо ръждясало поле от опашката
+			//и премахването му от опашката
+			Point point = q.front();
 			q.pop();
 			currentCount--;
 
 			int row = 0;
 			int col = 0;
 
+			//Цикъл определящ четирите съседни полета, на текущото ръждясало поле
+			//При наличие на поле извън границите на матрицата се взема граничната валидна стойност за текущата дименсия
 			for (int directionNumber = 0; directionNumber < 4; directionNumber++)
 			{
 				row = point.GetRow();
@@ -142,40 +147,44 @@ int main()
 				switch (directionNumber)
 				{
 				case 0:
-					row--;
+					row = std::max(--row, 0);
 					break;
 
 				case 1:
-					row++;
+					row = std::min(++row, maxRow - 1);
 					break;
 
 				case 2:
-					col--;
+					col = std::max(--col, 0);
 					break;
 
 				case 3:
-					col++;
+					col = std::min(++col, maxCol - 1);
 					break;
 
 				default:
 					break;
 				}
 
-				if (IsValidIndex(n, m, row, col) && matrix[row][col] == DOT)
+				//Проверява се дали новата съседна позиция не е заразена.
+				//Ако не е вече заразена, значи позицията е новозаразена, добавя се към опашката и
+				//позицията се маркира като заразена.
+				if (matrix[row][col] == DOT)
 				{
 					Point newPoint = Point(row, col);
 					q.push(newPoint);
-					matrix[row][col] = BEGUN;
+					matrix[row][col] = RUST;
 				}
 			}
 		}
 	}
 
+	//Изграждане на изходният стринг
 	std::string output = std::string();
 
-	for (int r = 0; r < n; r++)
+	for (int r = 0; r < maxRow; r++)
 	{
-		for (int c = 0; c < m; c++)
+		for (int c = 0; c < maxCol; c++)
 		{
 			output
 				.append(1, matrix[r][c]);
@@ -184,22 +193,16 @@ int main()
 		output.append("\r\n");
 	}
 
-	for (int r = 0; r < n; r++)
+	//Освобождаване на динамично заделената памет
+	for (int r = 0; r < maxRow; r++)
 	{
 		delete[] matrix[r];
 	}
 
 	delete[] matrix;
 
+	//Отпечатване на крайният резултат
 	std::cout << output;
-}
-
-bool IsValidIndex(int maxRow, int maxCol, int row, int col)
-{
-	bool result = row >= 0 && row < maxRow;
-	result = result && col >= 0 && col < maxCol;
-
-	return result;
 }
 
 //You are given a 10x10 matrix representing a metal square, which has begun to rust.There are 3 types of symbols in the matrix – a . (dot)means a healthy part of the metal, a # indicates a rust - resistant part, and a !indicates a part that has begun to rust.

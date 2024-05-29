@@ -89,24 +89,24 @@ bool IsValidIndex(int, int, int, int);
 
 int main()
 {
-	const int n = 10;
-	const int m = 10;
+	const int maxRow = 10;
+	const int maxCol = 10;
 	const char DOT = '.';
 	const char RUST = '#';
 	const char BEGUN = '!';
 
-	char** matrix = new char* [n];
+	char** matrix = new char* [maxRow];
 	std::string input;
 
 	std::queue<Point> q = std::queue<Point>();
 
-	for (int r = 0; r < n; r++)
+	for (int r = 0; r < maxRow; r++)
 	{
-		matrix[r] = new char[m];
+		matrix[r] = new char[maxCol];
 
 		std::getline(std::cin, input);
 
-		for (int c = 0; c < m; c++)
+		for (int c = 0; c < maxCol; c++)
 		{
 			matrix[r][c] = input[c];
 
@@ -161,7 +161,7 @@ int main()
 					break;
 				}
 
-				if (IsValidIndex(n, m, row, col) && matrix[row][col] == DOT)
+				if (IsValidIndex(maxRow, maxCol, row, col) && matrix[row][col] == DOT)
 				{
 					Point newPoint = Point(row, col);
 					q.push(newPoint);
@@ -173,9 +173,9 @@ int main()
 
 	std::string output = std::string();
 
-	for (int r = 0; r < n; r++)
+	for (int r = 0; r < maxRow; r++)
 	{
-		for (int c = 0; c < m; c++)
+		for (int c = 0; c < maxCol; c++)
 		{
 			output
 				.append(1, matrix[r][c]);
@@ -184,7 +184,7 @@ int main()
 		output.append("\r\n");
 	}
 
-	for (int r = 0; r < n; r++)
+	for (int r = 0; r < maxRow; r++)
 	{
 		delete[] matrix[r];
 	}
