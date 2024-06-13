@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 Rust_02", "..\02 Rust_02
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 Rust_03", "..\02 Rust_03\02 Rust_03.vcxproj", "{CB83EC58-43B1-4DDD-ACB3-220AB3A651C6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 Rust_04", "..\02 Rust_04\02 Rust_04.vcxproj", "{9E84E192-5D74-48FC-AC87-C8139C723C93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{CB83EC58-43B1-4DDD-ACB3-220AB3A651C6}.Release|x64.Build.0 = Release|x64
 		{CB83EC58-43B1-4DDD-ACB3-220AB3A651C6}.Release|x86.ActiveCfg = Release|Win32
 		{CB83EC58-43B1-4DDD-ACB3-220AB3A651C6}.Release|x86.Build.0 = Release|Win32
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Debug|x64.ActiveCfg = Debug|x64
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Debug|x64.Build.0 = Debug|x64
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Debug|x86.ActiveCfg = Debug|Win32
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Debug|x86.Build.0 = Debug|Win32
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Release|x64.ActiveCfg = Release|x64
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Release|x64.Build.0 = Release|x64
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Release|x86.ActiveCfg = Release|Win32
+		{9E84E192-5D74-48FC-AC87-C8139C723C93}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
