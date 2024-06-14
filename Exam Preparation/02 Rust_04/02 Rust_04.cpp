@@ -1,6 +1,7 @@
 // 02 Rust_04.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+
 #include <iostream>
 #include <string>
 #include <queue>
@@ -18,7 +19,7 @@ int main()
 	std::string input;
 
 	std::queue<std::pair<int, int>> q = std::queue<std::pair<int, int>>();
-	//Запълване на матрицата и първоначално установяване на опашката с координатите на ръждивите клетки
+	//Populating the matrix and initially establishing the tail with the coordinates of the rust cells
 	for (int r = 0; r < maxRow; r++)
 	{
 		matrix[r] = new char[maxCol];
@@ -43,13 +44,13 @@ int main()
 
 	for (int i = 0; i < passes; i++)
 	{
-		int currentCount = q.size(); // Текуща дължина на опашката - определя броя ръждясали полета за текущия етап
+		int currentCount = q.size(); // Current queue length - specifies the number of rusty fields for the current stage
 
-		//Цикъл, повтарящ се за всяко ново ръждясало поле от текущият етап
+		//Loop repeating for each new rusty field of the current stage
 		while (currentCount > 0)
 		{
-			//Извличане на координатите (индексине) на текущо ръждясало поле от опашката
-			//и премахването му от опашката
+			//Retrieve the coordinates (indexine) of the current rusty field from the queue
+			//and removing it from the queue
 			std::pair<int, int> point = q.front();
 			q.pop();
 			currentCount--;
@@ -57,8 +58,8 @@ int main()
 			int row = 0;
 			int col = 0;
 
-			//Цикъл определящ четирите съседни полета, на текущото ръждясало поле
-			//При наличие на поле извън границите на матрицата се взема граничната валидна стойност за текущата дименсия
+			//A loop defining the four adjacent fields of the current rusty field
+			//If there is a field outside the bounds of the matrix, the bounding valid value for the current dimension is taken
 			for (int directionNumber = 0; directionNumber < 4; directionNumber++)
 			{
 				row = point.first;
@@ -86,9 +87,9 @@ int main()
 					break;
 				}
 
-				//Проверява се дали новата съседна позиция не е заразена.
-				//Ако не е вече заразена, значи позицията е новозаразена, добавя се към опашката и
-				//позицията се маркира като заразена.
+				//Checking that the new adjacent position is not infected.
+				//If it is not already infected, then the position is newly infected, it is added to the queue and
+				//the position is marked as infected.
 				if (matrix[row][col] == DOT)
 				{
 					std::pair<int, int> newPoint = std::pair<int, int>(row, col);
@@ -99,7 +100,7 @@ int main()
 		}
 	}
 
-	//Изграждане на изходният стринг
+	//Building the output string
 	std::string output = std::string();
 
 	for (int r = 0; r < maxRow; r++)
@@ -113,7 +114,7 @@ int main()
 		output.append("\r\n");
 	}
 
-	//Освобождаване на динамично заделената памет
+	//Freeing dynamically allocated memory
 	for (int r = 0; r < maxRow; r++)
 	{
 		delete[] matrix[r];
@@ -121,7 +122,7 @@ int main()
 
 	delete[] matrix;
 
-	//Отпечатване на крайният резултат
+	//Print the final result
 	std::cout << output;
 }
 
